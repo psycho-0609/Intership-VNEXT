@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="engineV8" class="com.vnext.demo.component.EngineV8"></bean>
+    <bean id="engineTurbo" class="com.vnext.demo.component.EngineTurbo"></bean>
+    <bean id="wheelBWM" class="com.vnext.demo.component.BWMWheel"></bean>
+    <bean id="car" class="com.vnext.demo.component.Car">
+        <property name="nameCar" value="BWMI8"></property>
+        <property name="engine" ref="engineV8"></property>
+        <property name="wheelCar" ref="wheelBWM"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.mapper.EmployeeMapper">
+    <!--query-->
+    <select id="getEmployees" resultType="Employee">
+        select *
+        from employee
+    </select>
+
+    <select id="getEmployeeById" resultType="Employee">
+        select * from employee where id=#{value}
+    </select>
+
+    <insert id="insertEmployee" parameterType="com.example.mybatis.model.Employee">
+        insert into employee (division, firstName,
+                              lastName, position)
+        values (#{division}, #{firstName},
+                #{lastName}, #{position})
+    </insert>
+    <update id="updateEmployee" parameterType="com.example.mybatis.model.Employee">
+        update employee
+        set division = #{division,jdbcType=VARCHAR},
+            firstName = #{firstName,jdbcType=VARCHAR},
+            lastName = #{lastName,jdbcType=VARCHAR},
+        position = #{position,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteEmployee" parameterType="java.lang.Long">
+
+        delete from employee
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>
